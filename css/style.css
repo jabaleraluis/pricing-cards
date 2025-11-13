@@ -265,11 +265,10 @@ img {
   overflow: hidden;
 }
 
-.card__inner .ribbon::before {
+.card__inner .ribbon p {
   position: absolute;
-  content: "Recommend";
 
-  color: #fff;
+  color: var(--main-text-color);
   background: var(--card-color);
   font-size: var(--fs-n);
   font-weight: var(--fw-400);
@@ -280,17 +279,16 @@ img {
   transform: rotate(-45deg) translateY(-1rem);
 }
 
-/* .card__inner .ribbon::before {
-  display: inline-block;
-  color: transparent;
-  font-size: var(--fs-body);
-  font-weight: var(--fw-500);
-  background: linear-gradient(-30deg, var(--body-text-color) 70%, var(--main-text-color), var(--body-text-color) 75%) right/400%;
-  background-clip: text;
-  background-repeat: repeat;
-  animation: shimmer 6s linear infinite;
-  transition: background var(--tr-sm) ease;
-} */
+.card__inner .ribbon p::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.25) 50%, transparent 80%);
+  animation: shine 9s infinite;
+}
 
 .card__inner .ribbon::after {
   position: absolute;
@@ -305,9 +303,9 @@ img {
   z-index: -1;
 }
 
-@keyframes shimmer {
+@keyframes shine {
   100% {
-    background-position: left;
+    left: 150%;
   }
 }
 
@@ -434,6 +432,7 @@ img {
   }
 
   .cards-section .title {
+    -webkit-text-stroke: 0.25px #000;
     text-shadow: 1px 1px 0 var(--neon-green);
   }
 
@@ -445,5 +444,23 @@ img {
 @media screen and (max-width: 576px) {
   .cards__wrapper .card__outer {
     min-width: 95%;
+  }
+
+  .cards__wrapper .card__outer {
+    background: var(--card-color);
+    border-color: var(--main-text-color);
+    box-shadow: 0 0 5px color-mix(in srgb, var(--card-color) 75%, transparent), 0 0 15px color-mix(in srgb, var(--card-color) 50%, transparent), 0 0 35px color-mix(in srgb, var(--card-color) 25%, transparent);
+  }
+
+  .card__outer:hover {
+    transform: none;
+  }
+
+  .card__outer a {
+    color: var(--main-text-color);
+  }
+
+  .card__outer:hover a {
+    gap: 0.25rem;
   }
 }
